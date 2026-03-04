@@ -17,5 +17,23 @@ public class LinkedList {
         this.address = address;
         LinkedList next;  // reference to next contact
     }
+    public String getName() { // returns name
+        return this.name;
+    }
+    public void setName(String name) { // sets name to given parameter
+        this.name = name;
+    }
+    public String getNumber() { // returns number
+        return this.number;
+    }
+    public void setNumber(String number) { // sets number to given number
+        this.number = number;
+    }
+    public String getAddress() { // returns address
+        return this.address;
+    }
+    public void setAddress(String address) { // sets address to given parameter
+        this.address = address;
+    }
     
 }
