@@ -2,20 +2,20 @@
 // 3/3/26
 // CS145 Assignment 8
 // Phonebook, a program that manages a phonebook
-// LinkedList that represents a contact
-public class LinkedList {
+// ListNode that represents a contact
+public class ListNode {
     private String name; // name of contact
     private String number; // number of contact
     private String address; // address of contact
 
-    public LinkedList() {
-        LinkedList next; // reference to next contact
+    public ListNode() {
+        ListNode next; // reference to next contact
     }
-    public LinkedList(String name, String number, String address) {
+    public ListNode(String name, String number, String address) {
         this.name = name;
         this.number = number;
         this.address = address;
-        LinkedList next;  // reference to next contact
+        ListNode next;  // reference to next contact
     }
     public String getName() { // returns name
         return this.name;
@@ -35,5 +35,4 @@ public class LinkedList {
     public void setAddress(String address) { // sets address to given parameter
         this.address = address;
     }
-    
 }
