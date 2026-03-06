@@ -31,7 +31,7 @@ public class ListNode {
         while (current != null) { // do until there is no next assigned to the node, effectively making it the end of the list
             System.out.println("While loop");
             count += 1;
-            if (search == current.name || search == current.number || search == current.address) {
+            if (search.equals(current.name) || search.equals(current.number) || search.equals(current.address)) { // if search matches name, number, or address
                 System.out.println("Match found");
                 return count;
             }

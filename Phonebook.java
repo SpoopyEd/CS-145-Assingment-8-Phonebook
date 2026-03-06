@@ -8,14 +8,11 @@ public class Phonebook {
     public static Scanner input = new Scanner(System.in);  // create a Scanner object
     public static ListNode addPrompt(ListNode phonebook) {
         System.out.print("What is the name of the new contact?: ");
-        //String name = input.nextLine();
-        String name = "Luis";
+        String name = input.nextLine();
         System.out.print("What is the phone number of the new contact?: ");
-        //String number = input.nextLine();
-        String number = "fd";
+        String number = input.nextLine();
         System.out.print("What is the address of the new contact?: ");
-        //String address = input.nextLine();
-        String address = "d";
+        String address = input.nextLine();
         phonebook.add(name, number, address);
         return phonebook;
     }
