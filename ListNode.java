@@ -25,12 +25,28 @@ public class ListNode {
     }
 
     // methods that will only be used by the "list" or "head"
+    public int search(String search) {
+        int count = 0;
+        ListNode current = front;
+        while (current != null) { // do until there is no next assigned to the node, effectively making it the end of the list
+            System.out.println("While loop");
+            count += 1;
+            if (search == current.name || search == current.number || search == current.address) {
+                System.out.println("Match found");
+                return count;
+            }
+            System.out.println("Match not found, onto next");
+            current = current.next;
+        }
+        count = 0;
+        return count;
+    }
     public void displayAll() {
         int count = 0;
         ListNode current = front;
         while (current != null) { // do until there is no next assigned to the node, effectively making it the end of the list
             count += 1;
-            System.out.printf("Contact %d%nName: %s%nNumber: %s%nAddress: %s%n", count, current.name, current.number, current.address);
+            System.out.printf("Contact %d%nName: %s%nNumber: %s%nAddress: %s%n%n", count, current.name, current.number, current.address);
             current = current.next;
         }
     }
