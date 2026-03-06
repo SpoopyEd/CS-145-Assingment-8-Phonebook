@@ -7,6 +7,7 @@ public class ListNode {
     private String name; // name of contact
     private String number; // number of contact
     private String address; // address of contact
+    private ListNode front; // reference to node in front of it
     private ListNode next; // reference to next contact
 
     public ListNode() {
@@ -22,6 +23,31 @@ public class ListNode {
         this.address = address;
         this.next = next; // parameter next = next of this node
     }
+
+    // methods that will only be used by the "list" or "head"
+    public void count() { // counts amount of contacts in the list
+        ListNode current = this;
+        while (current != null) {
+            System.out.println(current.name);
+            current = current.next;
+        }
+
+    }
+    public void add(String name, String number, String address) {
+        if (front == null) {
+            // adding to an empty list
+            front = new ListNode(name, number, address);
+        } else {
+            // adding to the end of an existing list
+            ListNode current = front;
+            while (current.next != null) { // do until there is no next assigned to the node, effectively making it the end of the list
+                current = current.next;
+            }
+            current.next = new ListNode(name, number, address);
+        }
+    }
+
+    // methods that can be used on any ListNode/Contact
     public String getName() { // returns name
         return this.name;
     }
@@ -39,13 +65,5 @@ public class ListNode {
     }
     public void setAddress(String address) { // sets address to given parameter
         this.address = address;
-    }
-    public void count() { // counts amount of contacts in the list
-        ListNode current = this;
-        while (current != null) {
-            System.out.println(current.name);
-            current = current.next;
-        }
-
     }
 }
