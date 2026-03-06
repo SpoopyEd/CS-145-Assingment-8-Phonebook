@@ -11,6 +11,6 @@ public class Test {
 
         list.add("Eduardo", "360", "1234");
         list.add("Aguilera", "360", "1234");
-        list.count();
+        System.out.println(list.count());
     }
 }
