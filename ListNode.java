@@ -7,15 +7,20 @@ public class ListNode {
     private String name; // name of contact
     private String number; // number of contact
     private String address; // address of contact
+    private ListNode next; // reference to next contact
 
     public ListNode() {
-        ListNode next; // reference to next contact
     }
     public ListNode(String name, String number, String address) {
         this.name = name;
         this.number = number;
         this.address = address;
-        ListNode next;  // reference to next contact
+    }
+    public ListNode(String name, String number, String address, ListNode next) {
+        this.name = name;
+        this.number = number;
+        this.address = address;
+        this.next = next; // parameter next = next of this node
     }
     public String getName() { // returns name
         return this.name;
@@ -34,5 +39,13 @@ public class ListNode {
     }
     public void setAddress(String address) { // sets address to given parameter
         this.address = address;
+    }
+    public void count() { // counts amount of contacts in the list
+        ListNode current = this;
+        while (current != null) {
+            System.out.println(current.name);
+            current = current.next;
+        }
+
     }
 }

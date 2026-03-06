@@ -12,6 +12,6 @@ public class Test {
         System.out.println("Number: " + list.getNumber());
         System.out.println("Address: " + list.getAddress());
 
-
+        list.count();
     }
 }
