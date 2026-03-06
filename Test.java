@@ -8,9 +8,12 @@ public class Test {
     public static Scanner input = new Scanner(System.in);  // create a Scanner object
     public static void main(String[] args) {
         ListNode list = new ListNode();
+        list = Phonebook.addPrompt(list);
+        list = Phonebook.addPrompt(list);
+        list.displayAll();
 
-        list.add("Eduardo", "360", "1234");
-        list.add("Aguilera", "360", "1234");
-        System.out.println(list.count());
+        // list.add("Eduardo", "360", "1234");
+        // list.add("Aguilera", "360", "1234");
+        // System.out.println(list.count());
     }
 }

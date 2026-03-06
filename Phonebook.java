@@ -6,14 +6,15 @@
 import java.util.Scanner;
 public class Phonebook {
     public static Scanner input = new Scanner(System.in);  // create a Scanner object
-    public static void add() {
+    public static ListNode addPrompt(ListNode phonebook) {
         System.out.print("What is the name of the new contact?: ");
         String name = input.nextLine();
         System.out.print("What is the phone number of the new contact?: ");
         String number = input.nextLine();
         System.out.print("What is the address of the new contact?: ");
         String address = input.nextLine();
-        ListNode list = new ListNode(name, number, address);
+        phonebook.add(name, number, address);
+        return phonebook;
     }
     public static void userMenu() {
         boolean menu = true;

@@ -25,6 +25,15 @@ public class ListNode {
     }
 
     // methods that will only be used by the "list" or "head"
+    public void displayAll() {
+        int count = 0;
+        ListNode current = front;
+        while (current != null) { // do until there is no next assigned to the node, effectively making it the end of the list
+            count += 1;
+            System.out.printf("Contact %d%nName: %s%nNumber: %s%nAddress: %s%n", count, current.name, current.number, current.address);
+            current = current.next;
+        }
+    }
     public int count() { // counts amount of contacts in the list
         int count = 0;
         ListNode current = front;
@@ -33,7 +42,6 @@ public class ListNode {
             current = current.next;
         }
         return count;
-
     }
     public void add(String name, String number, String address) {
         if (front == null) {
