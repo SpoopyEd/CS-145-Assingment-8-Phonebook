@@ -26,7 +26,7 @@ public class ListNode {
 
     // methods that will only be used by the "list" or "head"
     public void count() { // counts amount of contacts in the list
-        ListNode current = this;
+        ListNode current = front;
         while (current != null) {
             System.out.println(current.name);
             current = current.next;
