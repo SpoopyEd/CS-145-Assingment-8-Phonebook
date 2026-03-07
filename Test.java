@@ -11,9 +11,9 @@ public class Test {
         list.add("Eduardo", "1234", "5678");
         list.add("Aguilera", "4321", "8765");
         list.add("Jeff", "9876", "6789");
-        list = Phonebook.addPrompt(list);
+        //list = Phonebook.addPrompt(list);
         list.displayAll();
-        System.out.println(list.search("Luis"));
+        //System.out.println(list.search("Luis"));
 
         // list.add("Eduardo", "360", "1234");
         // list.add("Aguilera", "360", "1234");

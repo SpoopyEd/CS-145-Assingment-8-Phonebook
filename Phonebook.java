@@ -16,6 +16,13 @@ public class Phonebook {
         phonebook.add(name, number, address);
         return phonebook;
     }
+    public static ListNode searchPrompt(ListNode phonebook) {
+        // first check if empty
+        System.out.println("What attribute would you like to search for? (Must be an exact match)");
+        String search = input.nextLine();
+        phonebook.display(phonebook.search(search));
+        return phonebook;
+    }
     public static void userMenu() {
         boolean menu = true;
         while (menu == true) { // keep menu looping
