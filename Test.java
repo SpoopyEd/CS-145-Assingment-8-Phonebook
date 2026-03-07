@@ -13,7 +13,11 @@ public class Test {
         list.add("Jeff", "9876", "6789");
         //list = Phonebook.addPrompt(list);
         list.displayAll();
-        Phonebook.searchPrompt(list);
+        int index = Phonebook.searchPrompt(list);
+        System.out.println("What would you like to edit the name to be?: ");
+            String name = input.nextLine();
+            list.getContact(index).setName(name);
+        list.displayAll();
         //System.out.println(list.search("Luis"));
 
         // list.add("Eduardo", "360", "1234");

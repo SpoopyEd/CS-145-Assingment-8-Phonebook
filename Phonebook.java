@@ -16,12 +16,51 @@ public class Phonebook {
         phonebook.add(name, number, address);
         return phonebook;
     }
-    public static ListNode searchPrompt(ListNode phonebook) {
+    public static int searchPrompt(ListNode phonebook) {
         // first check if empty
         System.out.println("What attribute would you like to search for? (Must be an exact match)");
         String search = input.nextLine();
         int index = phonebook.search(search);
         phonebook.display(index);
+        return index;
+    }
+    public static ListNode editPrompt(ListNode phonebook) {
+        int index = searchPrompt(phonebook);
+
+        boolean menu = true;
+        while (menu == true) { // keep menu looping
+            System.out.println("What would you like to edit?");
+            System.out.println("1: Name, 2: Number, 3 Address, 4 All, 5 Quit Menu");
+            try {
+                int answer = input.nextInt();
+                switch (answer) {
+                case 1:
+                    System.out.println("What would you like to edit the name to be?: ");
+                    String name = input.nextLine();
+                    phonebook.getContact(index).setName(name);
+                    break;
+                case 2:
+                    // number
+                    break;
+                case 3:
+                    // address
+                    break;
+                case 4:
+                    // all
+                    break;
+                case 5:
+                    menu = false;
+                    break;
+                default:
+                    System.out.println("Not an option, try again");
+                    break;
+                }
+            } catch (Exception e) {
+                System.out.println("Invalid input, digit answers only");
+            } finally {
+                input.nextLine(); // clears input
+            }
+        }
         return phonebook;
     }
     public static void userMenu() {

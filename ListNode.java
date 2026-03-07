@@ -58,6 +58,14 @@ public class ListNode {
         System.out.printf("Contact %d%nName: %s%nNumber: %s%nAddress: %s%n%n", index, current.name, current.number, current.address);
         
     }
+    public ListNode getContact(int index) {
+        ListNode current = front;
+        for (int i = 1; i < index; i++) {
+            current = current.next;
+        }
+        System.out.printf("Contact %d%nName: %s%nNumber: %s%nAddress: %s%n%n", index, current.name, current.number, current.address);
+        return current;
+    }
     public int count() { // counts amount of contacts in the list
         int count = 0;
         ListNode current = front;
