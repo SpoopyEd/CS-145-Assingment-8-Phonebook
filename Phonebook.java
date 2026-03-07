@@ -20,7 +20,8 @@ public class Phonebook {
         // first check if empty
         System.out.println("What attribute would you like to search for? (Must be an exact match)");
         String search = input.nextLine();
-        phonebook.display(phonebook.search(search));
+        int index = phonebook.search(search);
+        phonebook.display(index);
         return phonebook;
     }
     public static void userMenu() {

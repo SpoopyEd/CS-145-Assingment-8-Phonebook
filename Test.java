@@ -13,6 +13,7 @@ public class Test {
         list.add("Jeff", "9876", "6789");
         //list = Phonebook.addPrompt(list);
         list.displayAll();
+        Phonebook.searchPrompt(list);
         //System.out.println(list.search("Luis"));
 
         // list.add("Eduardo", "360", "1234");
