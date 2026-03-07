@@ -24,6 +24,15 @@ public class Phonebook {
         phonebook.display(index);
         return index;
     }
+    public static ListNode swapPrompt(ListNode phonebook) {
+        System.out.println("Search for contact 1 you want to swap");
+        int index1 = searchPrompt(phonebook);
+        System.out.println("Search for contact 2 you want to swap");
+        int index2 = searchPrompt(phonebook);
+        phonebook.swap(index1, index2);
+        phonebook.displayAll();
+        return phonebook;
+    }
     public static ListNode editPrompt(ListNode phonebook) {
         String name;
         String number;
@@ -32,7 +41,7 @@ public class Phonebook {
         boolean menu = true;
         while (menu == true) { // keep menu looping
             System.out.println("What would you like to edit?");
-            System.out.println("1: Name, 2: Number, 3: Address, 5: Quit Menu");
+            System.out.println("1: Name, 2: Number, 3: Address, 4: Quit Menu");
             try {
                 int answer = input.nextInt();
                 input.nextLine(); // clears input
@@ -53,8 +62,6 @@ public class Phonebook {
                     phonebook.getContact(index).setAddress(address);
                     break;
                 case 4:
-                    System.out.println("What would you like to edit the index to be?");
-                case 5:
                     menu = false;
                     break;
                 default:

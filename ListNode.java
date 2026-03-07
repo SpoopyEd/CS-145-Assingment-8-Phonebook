@@ -34,6 +34,7 @@ public class ListNode {
             count += 1;
             if (search.equals(current.name) || search.equals(current.number) || search.equals(current.address)) { // if search matches name, number, or address
                 System.out.println("Match found");
+                System.out.println();
                 return count;
             }
             //System.out.println("Match not found, onto next"); // test
