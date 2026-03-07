@@ -51,7 +51,7 @@ public class ListNode {
             current = current.next;
         }
     }
-    public void displayAllRev() {
+    public void displayAllRev() { // displays in reverse
         int count = 0;
         ListNode current = getContact(count());
         while (current != null) { // do until there is no next assigned to the node, effectively making it the end of the list
@@ -65,15 +65,14 @@ public class ListNode {
         for (int i = 1; i < index; i++) {
             current = current.next;
         }
-        System.out.printf("Contact %d%nName: %s%nNumber: %s%nAddress: %s%n%n", index, current.name, current.number, current.address);
+        //System.out.printf("Contact %d%nName: %s%nNumber: %s%nAddress: %s%n%n", index, current.name, current.number, current.address);
     }
     public ListNode getContact(int index) {
         ListNode current = front;
         for (int i = 1; i < index; i++) {
             current = current.next;
         }
-        System.out.printf("Get Contact %d%nName: %s%nNumber: %s%nAddress: %s%n%n", index, current.name, current.number, current.address); // test
-        //System.out.printf("Next Contact %d%nName: %s%nNumber: %s%nAddress: %s%n%n", index+1, current.next.name, current.next.number, current.next.address); // test
+        
         return current;
     }
     public int count() { // counts amount of contacts in the list
@@ -99,11 +98,49 @@ public class ListNode {
             current.next.prev = current; // new node references current as the previous
         }
     }
-    public void swap(int index1, int index2) { // swaps contact at index1 to index2
-        ListNode index1next = getContact(index1).next;
-        ListNode index2next = getContact(index2).next;
-        getContact(index1).next = index2next;
-        getContact(index2).next = index1next;
+    public void swap(int index1, int index2) {
+        if (index1 == index2) return; // if they're the same, don't bother
+        ListNode contact1 = getContact(index1);
+        ListNode contact2 = getContact(index2);
+
+        if (contact1.prev != null) { // updates nodes that are pointing towards given contacts
+            contact1.prev.next = contact2;
+        } else {
+            front = contact2; // if contact 1 was the head
+        }
+        if (contact2.prev != null) {
+            contact2.prev.next = contact1;
+        } else {
+            front = contact1; // if contact 1 was the head
+        }
+        if (contact1.next != null) {
+            contact1.next.prev = contact2;
+        }
+        if (contact2.next != null) {
+            contact2.next.prev = contact1;
+        }
+
+        ListNode tempNext = contact1.next;
+        ListNode tempPrev = contact1.prev;
+
+        if (tempNext == contact2) { // if they're next to eachother (contact1 before contact2)
+            contact1.next = contact2.next;
+            contact1.prev = contact2;
+            contact2.next = contact1;
+            contact2.prev = tempPrev;
+        }
+        else if (contact2.next == contact1) { // if they're next to eachother (contact2 before contact1)
+            contact2.next = contact1.next;
+            contact2.prev = contact1;
+            contact1.next = contact2;
+            contact1.prev = contact2.prev;
+        } 
+        else { // if they aren't next to eachother
+            contact1.next = contact2.next;
+            contact1.prev = contact2.prev;
+            contact2.next = tempNext;
+            contact2.prev = tempPrev;
+        }
     }
 
     // methods that can be used on any ListNode/Contact

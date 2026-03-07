@@ -11,9 +11,10 @@ public class Test {
         list.add("Eduardo", "1234", "5678");
         list.add("Aguilera", "4321", "8765");
         list.add("Jeff", "9876", "6789");
+        list.add("Luis", "d", "f");
         list.displayAll();
-        //list = Phonebook.editPrompt(list);
-        list.displayAllRev();
-
+        list.swap(2, 3);
+        list.displayAll();
+        
     }
 }
