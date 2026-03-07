@@ -29,13 +29,13 @@ public class ListNode {
         int count = 0;
         ListNode current = front;
         while (current != null) { // do until there is no next assigned to the node, effectively making it the end of the list
-            System.out.println("While loop");
+            System.out.println("While loop"); // test
             count += 1;
             if (search.equals(current.name) || search.equals(current.number) || search.equals(current.address)) { // if search matches name, number, or address
                 System.out.println("Match found");
                 return count;
             }
-            System.out.println("Match not found, onto next");
+            System.out.println("Match not found, onto next"); // test
             current = current.next;
         }
         count = 0;
@@ -74,6 +74,11 @@ public class ListNode {
     }
 
     // methods that can be used on any ListNode/Contact
+    public void edit(String name, String number, String address) { // edits a listnode
+        this.name = name;
+        this.number = number;
+        this.address = address;
+    }
     public String getName() { // returns name
         return this.name;
     }
