@@ -25,30 +25,36 @@ public class Phonebook {
         return index;
     }
     public static ListNode editPrompt(ListNode phonebook) {
+        String name;
+        String number;
+        String address;
         int index = searchPrompt(phonebook);
-
         boolean menu = true;
         while (menu == true) { // keep menu looping
             System.out.println("What would you like to edit?");
-            System.out.println("1: Name, 2: Number, 3 Address, 4 All, 5 Quit Menu");
+            System.out.println("1: Name, 2: Number, 3: Address, 4: Quit Menu");
             try {
                 int answer = input.nextInt();
+                input.nextLine(); // clears input
                 switch (answer) {
                 case 1:
-                    System.out.println("What would you like to edit the name to be?: ");
-                    String name = input.nextLine();
+                    System.out.print("What would you like to edit the name to be?: ");
+                    name = input.nextLine();
                     phonebook.getContact(index).setName(name);
                     break;
                 case 2:
+                    System.out.print("What would you like to edit the number to be?: ");
+                    number = input.nextLine();
+                    phonebook.getContact(index).setNumber(number);
                     // number
                     break;
                 case 3:
+                    System.out.print("What would you like to edit the address to be?: ");
+                    address = input.nextLine();
+                    phonebook.getContact(index).setAddress(address);
                     // address
                     break;
                 case 4:
-                    // all
-                    break;
-                case 5:
                     menu = false;
                     break;
                 default:
@@ -57,7 +63,6 @@ public class Phonebook {
                 }
             } catch (Exception e) {
                 System.out.println("Invalid input, digit answers only");
-            } finally {
                 input.nextLine(); // clears input
             }
         }
