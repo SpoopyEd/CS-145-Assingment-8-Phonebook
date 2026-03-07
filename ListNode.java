@@ -9,6 +9,7 @@ public class ListNode {
     private String address; // address of contact
     private ListNode front; // reference to node in front of it
     private ListNode next; // reference to next contact
+    private ListNode prev; // reference to previous contact
 
     public ListNode() {
     }
@@ -50,6 +51,15 @@ public class ListNode {
             current = current.next;
         }
     }
+    public void displayAllRev() {
+        int count = 0;
+        ListNode current = getContact(count());
+        while (current != null) { // do until there is no next assigned to the node, effectively making it the end of the list
+            count += 1;
+            System.out.printf("Contact %d%nName: %s%nNumber: %s%nAddress: %s%n%n", count, current.name, current.number, current.address);
+            current = current.prev;
+        }
+    }
     public void display(int index) { // displays information of contact at "index"
         ListNode current = front;
         for (int i = 1; i < index; i++) {
@@ -62,8 +72,8 @@ public class ListNode {
         for (int i = 1; i < index; i++) {
             current = current.next;
         }
-        System.out.printf("Get Contact %d%nName: %s%nNumber: %s%nAddress: %s%n%n", index, current.name, current.number, current.address);
-        //System.out.printf("Next Contact %d%nName: %s%nNumber: %s%nAddress: %s%n%n", index+1, current.next.name, current.next.number, current.next.address);
+        System.out.printf("Get Contact %d%nName: %s%nNumber: %s%nAddress: %s%n%n", index, current.name, current.number, current.address); // test
+        //System.out.printf("Next Contact %d%nName: %s%nNumber: %s%nAddress: %s%n%n", index+1, current.next.name, current.next.number, current.next.address); // test
         return current;
     }
     public int count() { // counts amount of contacts in the list
@@ -86,6 +96,7 @@ public class ListNode {
                 current = current.next;
             }
             current.next = new ListNode(name, number, address);
+            current.next.prev = current; // new node references current as the previous
         }
     }
     public void swap(int index1, int index2) { // swaps contact at index1 to index2

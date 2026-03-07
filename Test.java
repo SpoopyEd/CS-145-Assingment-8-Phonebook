@@ -12,9 +12,8 @@ public class Test {
         list.add("Aguilera", "4321", "8765");
         list.add("Jeff", "9876", "6789");
         list.displayAll();
-        list.swap(1,2);
         //list = Phonebook.editPrompt(list);
-        list.displayAll();
+        list.displayAllRev();
 
     }
 }
