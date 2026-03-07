@@ -29,13 +29,13 @@ public class ListNode {
         int count = 0;
         ListNode current = front;
         while (current != null) { // do until there is no next assigned to the node, effectively making it the end of the list
-            System.out.println("While loop"); // test
+            //System.out.println("While loop"); // test
             count += 1;
             if (search.equals(current.name) || search.equals(current.number) || search.equals(current.address)) { // if search matches name, number, or address
                 System.out.println("Match found");
                 return count;
             }
-            System.out.println("Match not found, onto next"); // test
+            //System.out.println("Match not found, onto next"); // test
             current = current.next;
         }
         count = 0;
@@ -56,13 +56,14 @@ public class ListNode {
             current = current.next;
         }
         System.out.printf("Contact %d%nName: %s%nNumber: %s%nAddress: %s%n%n", index, current.name, current.number, current.address);
-        
     }
     public ListNode getContact(int index) {
         ListNode current = front;
         for (int i = 1; i < index; i++) {
             current = current.next;
         }
+        System.out.printf("Get Contact %d%nName: %s%nNumber: %s%nAddress: %s%n%n", index, current.name, current.number, current.address);
+        //System.out.printf("Next Contact %d%nName: %s%nNumber: %s%nAddress: %s%n%n", index+1, current.next.name, current.next.number, current.next.address);
         return current;
     }
     public int count() { // counts amount of contacts in the list
@@ -87,6 +88,12 @@ public class ListNode {
             current.next = new ListNode(name, number, address);
         }
     }
+    public void swap(int index1, int index2) { // swaps contact at index1 to index2
+        ListNode index1next = getContact(index1).next;
+        ListNode index2next = getContact(index2).next;
+        getContact(index1).next = index2next;
+        getContact(index2).next = index1next;
+    }
 
     // methods that can be used on any ListNode/Contact
     public void edit(String name, String number, String address) { // edits a listnode
@@ -95,6 +102,7 @@ public class ListNode {
         this.address = address;
     }
     public String getName() { // returns name
+        System.out.println(this.name);
         return this.name;
     }
     public void setName(String name) { // sets name to given parameter

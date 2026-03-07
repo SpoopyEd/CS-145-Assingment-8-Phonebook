@@ -32,29 +32,29 @@ public class Phonebook {
         boolean menu = true;
         while (menu == true) { // keep menu looping
             System.out.println("What would you like to edit?");
-            System.out.println("1: Name, 2: Number, 3: Address, 4: Quit Menu");
+            System.out.println("1: Name, 2: Number, 3: Address, 5: Quit Menu");
             try {
                 int answer = input.nextInt();
                 input.nextLine(); // clears input
                 switch (answer) {
-                case 1:
-                    System.out.print("What would you like to edit the name to be?: ");
+                case 1: // name
+                    System.out.println("What would you like to edit the name to be?");
                     name = input.nextLine();
                     phonebook.getContact(index).setName(name);
                     break;
-                case 2:
-                    System.out.print("What would you like to edit the number to be?: ");
+                case 2: // number
+                    System.out.println("What would you like to edit the number to be?");
                     number = input.nextLine();
                     phonebook.getContact(index).setNumber(number);
-                    // number
                     break;
-                case 3:
-                    System.out.print("What would you like to edit the address to be?: ");
+                case 3: // address
+                    System.out.println("What would you like to edit the address to be?");
                     address = input.nextLine();
                     phonebook.getContact(index).setAddress(address);
-                    // address
                     break;
                 case 4:
+                    System.out.println("What would you like to edit the index to be?");
+                case 5:
                     menu = false;
                     break;
                 default:
@@ -66,6 +66,9 @@ public class Phonebook {
                 input.nextLine(); // clears input
             }
         }
+        return phonebook;
+    }
+    public static ListNode deletePrompt(ListNode phonebook) {
         return phonebook;
     }
     public static void userMenu() {
