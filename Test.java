@@ -13,6 +13,6 @@ public class Test {
         list.add("Jeff", "9876", "6789");
         list.add("Luis", "d", "f");
         list.displayAll();
-        list = Phonebook.swapPrompt(list);
+        //list = Phonebook.swapPrompt(list);
     }
 }

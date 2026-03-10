@@ -43,13 +43,21 @@ public class ListNode {
         count = 0;
         return count;
     }
+    public void display(int index) { // displays information of contact at "index"
+        if (index > count()) {
+            System.out.println("No contact at that index");
+        } else {
+            ListNode current = front;
+            for (int i = 1; i < index; i++) {
+                current = current.next;
+            }
+            System.out.printf("Contact %d%nName: %s%nNumber: %s%nAddress: %s%n%n", index, current.name, current.number, current.address);
+        }
+    }
     public void displayAll() {
-        int count = 0;
-        ListNode current = front;
-        while (current != null) { // do until there is no next assigned to the node, effectively making it the end of the list
-            count += 1;
-            System.out.printf("Contact %d%nName: %s%nNumber: %s%nAddress: %s%n%n", count, current.name, current.number, current.address);
-            current = current.next;
+        int count = count();
+        for (int i = 1; i <= count; i++) {
+            display(i);
         }
     }
     public void displayAllRev() { // displays in reverse
@@ -60,13 +68,6 @@ public class ListNode {
             System.out.printf("Contact %d%nName: %s%nNumber: %s%nAddress: %s%n%n", count, current.name, current.number, current.address);
             current = current.prev;
         }
-    }
-    public void display(int index) { // displays information of contact at "index"
-        ListNode current = front;
-        for (int i = 1; i < index; i++) {
-            current = current.next;
-        }
-        //System.out.printf("Contact %d%nName: %s%nNumber: %s%nAddress: %s%n%n", index, current.name, current.number, current.address);
     }
     public ListNode getContact(int index) {
         ListNode current = front;
@@ -104,7 +105,9 @@ public class ListNode {
         ListNode contact1 = getContact(index1);
         ListNode contact2 = getContact(index2);
 
-        if (contact1.prev != null) { // updates nodes that are pointing towards given contacts
+        // updates nodes that are pointing towards given contacts
+        
+        if (contact1.prev != null) {
             contact1.prev.next = contact2;
         } else {
             front = contact2; // if contact 1 was the head
