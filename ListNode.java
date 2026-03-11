@@ -153,6 +153,19 @@ public class ListNode {
         this.number = number;
         this.address = address;
     }
+    public void delete(int index) { // deletes a contact and adjusts accordingly
+        if (index > count()) {
+            System.out.println("No contact at that index");
+            return;
+        } else {
+            ListNode current = front;
+            for (int i = 1; i < index; i++) {
+                current = current.next;
+            }
+            System.out.printf("Contact %d%nName: %s%nNumber: %s%nAddress: %s%n%n", index, current.name, current.number, current.address);
+        }
+        
+    }
     public String getName() { // returns name
         System.out.println(this.name);
         return this.name;
