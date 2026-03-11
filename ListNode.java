@@ -18,17 +18,18 @@ public class ListNode {
         this.number = number;
         this.address = address;
     }
-    public ListNode(String name, String number, String address, ListNode next) {
-        this.name = name;
-        this.number = number;
-        this.address = address;
-        this.next = next; // parameter next = next of this node
-    }
 
     // methods that will only be used by the "list" or "head"
 
-    public void add(String name, String number, String address) {
+    public boolean isEmpty() {
         if (front == null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public void add(String name, String number, String address) {
+        if (isEmpty() == true) {
             // adding to an empty list
             front = new ListNode(name, number, address);
         } else {
@@ -43,7 +44,7 @@ public class ListNode {
     }
     public int search(String search) {
         int count = 0;
-        if (front == null) {
+        if (isEmpty() == true) {
             System.out.println("Empty List Error");
             return count;
         } else {
@@ -109,15 +110,19 @@ public class ListNode {
         }
     }
     public void delete(int index) { // deletes a contact and adjusts accordingly
+        if (index <= 0) {
+            System.out.println("Out of bounds error when deleting");
+            return;
+        }
         try {
             ListNode current = front;
             for (int i = 1; i < index; i++) {
                 current = current.next;
             }
-            System.out.printf("Deleting Contact %d%nName: %s%nNumber: %s%nAddress: %s%n%n", index, current.name, current.number, current.address);
+            System.out.println("Deleting Contact.....");
 
             // updates nodes that are pointing towards given contacts
-        
+            
             if (current.prev != null) { // if current wasn't the front
                 current.prev.next = current.next; // prev that is pointing at deleted now points at what deleted points at
             } else {
