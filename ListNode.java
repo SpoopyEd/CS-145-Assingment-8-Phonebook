@@ -26,6 +26,21 @@ public class ListNode {
     }
 
     // methods that will only be used by the "list" or "head"
+
+    public void add(String name, String number, String address) {
+        if (front == null) {
+            // adding to an empty list
+            front = new ListNode(name, number, address);
+        } else {
+            // adding to the end of an existing list
+            ListNode current = front;
+            while (current.next != null) { // do until there is no next assigned to the node, effectively making it the end of the list
+                current = current.next;
+            }
+            current.next = new ListNode(name, number, address);
+            current.next.prev = current; // new node references current as the previous
+        }
+    }
     public int search(String search) {
         int count = 0;
         ListNode current = front;
@@ -43,72 +58,11 @@ public class ListNode {
         count = 0;
         return count;
     }
-    public void display(int index) { // displays information of contact at "index"
-        if (index > count()) {
-            System.out.println("No contact at that index");
-        } else {
-            ListNode current = front;
-            for (int i = 1; i < index; i++) {
-                current = current.next;
-            }
-            System.out.printf("Contact %d%nName: %s%nNumber: %s%nAddress: %s%n%n", index, current.name, current.number, current.address);
-        }
-    }
-    public void displayAll() {
-        System.out.println("Phonebook");
-        System.out.println("------------");
-        int count = count();
-        for (int i = 1; i <= count; i++) {
-            display(i);
-        }
-    }
-    public void displayAllRev() { // displays in reverse
-        int count = 0;
-        ListNode current = getContact(count());
-        while (current != null) { // do until there is no next assigned to the node, effectively making it the end of the list
-            count += 1;
-            System.out.printf("Contact %d%nName: %s%nNumber: %s%nAddress: %s%n%n", count, current.name, current.number, current.address);
-            current = current.prev;
-        }
-    }
-    public ListNode getContact(int index) {
-        ListNode current = front;
-        for (int i = 1; i < index; i++) {
-            current = current.next;
-        }
-        
-        return current;
-    }
-    public int count() { // counts amount of contacts in the list
-        int count = 0;
-        ListNode current = front;
-        while (current != null) { // do until there is no next assigned to the node, effectively making it the end of the list
-            count += 1;
-            current = current.next;
-        }
-        return count;
-    }
-    public void add(String name, String number, String address) {
-        if (front == null) {
-            // adding to an empty list
-            front = new ListNode(name, number, address);
-        } else {
-            // adding to the end of an existing list
-            ListNode current = front;
-            while (current.next != null) { // do until there is no next assigned to the node, effectively making it the end of the list
-                current = current.next;
-            }
-            current.next = new ListNode(name, number, address);
-            current.next.prev = current; // new node references current as the previous
-        }
-    }
     public void swap(int index1, int index2) {
         if (index1 == index2) return; // if they're the same, don't bother
         ListNode contact1 = getContact(index1);
         ListNode contact2 = getContact(index2);
-
         // updates nodes that are pointing towards given contacts
-        
         if (contact1.prev != null) {
             contact1.prev.next = contact2;
         } else {
@@ -125,10 +79,8 @@ public class ListNode {
         if (contact2.next != null) {
             contact2.next.prev = contact1;
         }
-
         ListNode tempNext = contact1.next;
         ListNode tempPrev = contact1.prev;
-
         if (tempNext == contact2) { // if they're next to eachother (contact1 before contact2)
             contact1.next = contact2.next;
             contact1.prev = contact2;
@@ -147,13 +99,6 @@ public class ListNode {
             contact2.next = tempNext;
             contact2.prev = tempPrev;
         }
-    }
-
-    // methods that can be used on any ListNode/Contact
-    public void edit(String name, String number, String address) { // edits a listnode
-        this.name = name;
-        this.number = number;
-        this.address = address;
     }
     public void delete(int index) { // deletes a contact and adjusts accordingly
         // handle negatives
@@ -179,6 +124,59 @@ public class ListNode {
             }
             current.nullify();
         }
+    }
+    public ListNode getContact(int index) {
+        ListNode current = front;
+        for (int i = 1; i < index; i++) {
+            current = current.next;
+        }
+        
+        return current;
+    }
+    public int count() { // counts amount of contacts in the list
+        int count = 0;
+        ListNode current = front;
+        while (current != null) { // do until there is no next assigned to the node, effectively making it the end of the list
+            count += 1;
+            current = current.next;
+        }
+        return count;
+    }
+    public void display(int index) { // displays information of contact at "index"
+        if (index > count()) {
+            System.out.println("No contact at that index");
+        } else {
+            ListNode current = front;
+            for (int i = 1; i < index; i++) {
+                current = current.next;
+            }
+            System.out.printf("Contact %d%nName: %s%nNumber: %s%nAddress: %s%n%n", index, current.name, current.number, current.address);
+        }
+    }
+    public void displayAll() { // displays all contacts
+        System.out.println("Phonebook");
+        System.out.println("------------");
+        int count = count();
+        for (int i = 1; i <= count; i++) {
+            display(i);
+        }
+    }
+    public void displayAllRev() { // displays all contacts in reverse (showcases use of prev reference)
+        int count = 0;
+        ListNode current = getContact(count());
+        while (current != null) { // do until there is no next assigned to the node, effectively making it the end of the list
+            count += 1;
+            System.out.printf("Contact %d%nName: %s%nNumber: %s%nAddress: %s%n%n", count, current.name, current.number, current.address);
+            current = current.prev;
+        }
+    }
+
+    // methods that can be used on any ListNode/Contact
+
+    public void edit(String name, String number, String address) { // edits a listnode
+        this.name = name;
+        this.number = number;
+        this.address = address;
     }
     public void nullify() { // sets all variables to null
         name = null; number = null; address = null; next = null; prev = null;
