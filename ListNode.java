@@ -7,7 +7,7 @@ public class ListNode {
     private String name; // name of contact
     private String number; // number of contact
     private String address; // address of contact
-    private ListNode front; // reference to node in front of it
+    private ListNode front; // reference to front or head
     private ListNode next; // reference to next contact
     private ListNode prev; // reference to previous contact
 
@@ -55,6 +55,8 @@ public class ListNode {
         }
     }
     public void displayAll() {
+        System.out.println("Phonebook");
+        System.out.println("------------");
         int count = count();
         for (int i = 1; i <= count; i++) {
             display(i);
@@ -154,7 +156,8 @@ public class ListNode {
         this.address = address;
     }
     public void delete(int index) { // deletes a contact and adjusts accordingly
-        if (index > count()) {
+        // handle negatives
+        if (index > count()) { // add this to other index methods
             System.out.println("No contact at that index");
             return;
         } else {
@@ -162,9 +165,23 @@ public class ListNode {
             for (int i = 1; i < index; i++) {
                 current = current.next;
             }
-            System.out.printf("Contact %d%nName: %s%nNumber: %s%nAddress: %s%n%n", index, current.name, current.number, current.address);
-        }
+            System.out.printf("Deleting Contact %d%nName: %s%nNumber: %s%nAddress: %s%n%n", index, current.name, current.number, current.address);
+
+            // updates nodes that are pointing towards given contacts
         
+            if (current.prev != null) { // if current wasn't the front
+                current.prev.next = current.next; // prev that is pointing at deleted now points at what deleted points at
+            } else {
+                front = current.next; // if deleted was the front
+            }
+            if (current.next != null) { // if deleted was not the end
+                current.next.prev = current.prev; // next that is pointing at deleted now points at what deleted points at
+            }
+            current.nullify();
+        }
+    }
+    public void nullify() { // sets all variables to null
+        name = null; number = null; address = null; next = null; prev = null;
     }
     public String getName() { // returns name
         System.out.println(this.name);
